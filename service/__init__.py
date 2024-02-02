@@ -11,13 +11,15 @@ def next_question():
         question = quiz.next_question()
         ui.update_question(question)
     else:
-        ui.game_over()
+        ui.game_over(quiz.question_number)
 
 
 def check_answer(answer):
-    if quiz.check_answer(answer):
+    is_right = quiz.check_answer(answer)
+    if is_right:
         ui.update_score(quiz.score)
-    next_question()
+
+    ui.give_feedback(is_right, next_question)
 
 
 quiz = QuizBrain(question_data)

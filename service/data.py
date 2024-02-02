@@ -1,6 +1,6 @@
 import requests
 
-from .config import QUESTION_API_DEFAULT_URL, QUESTION_AMOUNT, QUESTION_CATEGORY, QUESTION_TYPE
+from .config import *
 from .question_model import Question
 
 params = {
@@ -10,7 +10,7 @@ params = {
 }
 
 
-def get_data():
+def get_data() -> list[dict[str, str]]:
     response = requests.get(
         QUESTION_API_DEFAULT_URL,
         params=params,
@@ -25,7 +25,7 @@ def get_data():
     return response["results"]
 
 
-def convert_data():
+def convert_data() -> list[Question]:
     data = get_data()
     new_data = []
     for question in data:

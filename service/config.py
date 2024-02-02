@@ -1,5 +1,12 @@
 THEME_COLOR = "#375362"
 LABEL_COLOR = "white"
+FONT_COLOR = "black"
+
+QUESTION_BG_COLOR = "white"
+QUESTION_RIGHT_BG_COLOR = "green"
+QUESTION_RIGHT_FONT_COLOR = "white"
+QUESTION_WRONG_BG_COLOR = "red"
+QUESTION_WRONG_FONT_COLOR = "white"
 QUESTION_FONT = ("Arial", 20, "italic")
 
 TRUE_IMAGE_PATH = "images/true.png"
