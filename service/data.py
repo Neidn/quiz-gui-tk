@@ -1,6 +1,6 @@
 import requests
 
-from .config import *
+from .config import QUESTION_API_DEFAULT_URL, QUESTION_AMOUNT, QUESTION_CATEGORY, QUESTION_TYPE
 from .question_model import Question
 
 params = {
