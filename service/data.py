@@ -1,6 +1,7 @@
 import requests
 
 from .config import *
+from .question_model import Question
 
 params = {
     "amount": QUESTION_AMOUNT,
@@ -22,3 +23,19 @@ def get_data():
     response = response.json()
 
     return response["results"]
+
+
+def convert_data():
+    data = get_data()
+    new_data = []
+    for question in data:
+        new_question = Question(
+            q_text=question["question"],
+            q_answer=question["correct_answer"],
+        )
+        new_data.append(new_question)
+
+    return new_data
+
+
+question_data = convert_data()
