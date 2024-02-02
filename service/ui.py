@@ -7,13 +7,28 @@ class QuizUI(Tk):
 
     def __init__(self):
         super().__init__()
+        self.score = 0
+        self.true_image = PhotoImage(file=TRUE_IMAGE_PATH)
+        self.false_image = PhotoImage(file=FALSE_IMAGE_PATH)
 
         self.title("Quiz")
         self.config(padx=20, pady=20, bg=THEME_COLOR)
 
-        self.score_label = Label(text="Score: 0", bg=THEME_COLOR, fg=LABEL_COLOR)
+        self.__create_score_label()
+        self.__create_canvas()
+        self.__create_buttons()
+
+        self.mainloop()
+
+    def __create_score_label(self):
+        self.score_label = Label(text=f"Score: {self.score}", bg=THEME_COLOR, fg=LABEL_COLOR)
         self.score_label.grid(row=0, column=1)
 
+    def update_score(self, score):
+        self.score = score
+        self.score_label.config(text=f"Score: {self.score}")
+
+    def __create_canvas(self):
         self.canvas = Canvas(width=300, height=250, bg="white")
         self.question_text = self.canvas.create_text(
             150,
@@ -25,12 +40,12 @@ class QuizUI(Tk):
         )
         self.canvas.grid(row=1, column=0, columnspan=2, pady=50)
 
-        true_image = PhotoImage(file=TRUE_IMAGE_PATH)
-        self.true_button = Button(image=true_image, highlightthickness=0)
+    def update_question(self, question):
+        self.canvas.itemconfig(self.question_text, text=question)
+
+    def __create_buttons(self):
+        self.true_button = Button(image=self.true_image, highlightthickness=0)
         self.true_button.grid(row=2, column=0)
 
-        false_image = PhotoImage(file=FALSE_IMAGE_PATH)
-        self.false_button = Button(image=false_image, highlightthickness=0)
+        self.false_button = Button(image=self.false_image, highlightthickness=0)
         self.false_button.grid(row=2, column=1)
-
-        self.mainloop()
