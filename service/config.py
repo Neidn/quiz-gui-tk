@@ -1,0 +1,7 @@
+THEME_COLOR = "#375362"
+
+QUESTION_API_DEFAULT_URL = "https://opentdb.com/api.php"
+QUESTION_AMOUNT = 10
+QUESTION_CATEGORY = 18
+QUESTION_TYPE = "boolean"
+
